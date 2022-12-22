@@ -3,6 +3,7 @@ package entities;
 public class BusinessAccount extends Account {
 
 	private Double loanLimit;
+	private Double loanRate = 10.00 / 100;
 
 	public BusinessAccount() {
 		super();
@@ -25,8 +26,12 @@ public class BusinessAccount extends Account {
 	}
 
 	public void loan(Double amount) {
+		double aux = 0.0;
 		if (amount <= loanLimit) {
-			deposit(amount);
+
+			aux = balance * loanRate;
+
+			balance += amount - aux;
 		} else {
 
 		}
