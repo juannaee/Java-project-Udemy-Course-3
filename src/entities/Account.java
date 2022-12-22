@@ -36,8 +36,17 @@ public class Account {
 		return balance;
 	}
 
-	public void withdraw(Double amount) {
+	public Boolean testWithdraw(Double amount) {
 		if (amount > this.balance) {
+			return true;
+		} else {
+			return false;
+			
+		}
+	}
+
+	public void withdraw(Double amount) {
+		if (testWithdraw(amount) == true) {
 			System.out.println("You do not have enough credit to withdraw this amount");
 
 		} else {
@@ -50,6 +59,15 @@ public class Account {
 
 		this.balance += amount;
 
+	}
+	
+	public String toString() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("Balance: " + balance);
+		
+		return sb.toString();
 	}
 
 }
